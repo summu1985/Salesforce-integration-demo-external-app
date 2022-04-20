@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Add Opportunity</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/shards.min.css">
+    </head>
+    <body>
+        <div class="container my-5">
+            <h2 class="mb-5">New Opportunity</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <form action="#" th:action="@{/addopportunity}" th:object="${opportunity}" method="post">
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <label for="accountId" class="col-form-label">Account Id</label>
+                                <label for="accountName" class="col-form-label">Account Name</label>
+                                <label for="Name" class="col-form-label">Name</label>
+                                <label for="Amount" class="col-form-label">Amount</label>
+                                <label for="StageName" class="col-form-label">Stage Name</label>
+                                <label for="CloseDate" class="col-form-label">Close Date</label>
+                                <label for="Probability" class="col-form-label">Probability</label>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" th:field="*{accountId}" class="form-control" id="accountId" placeholder="Account Id">
+                                <span th:if="${#fields.hasErrors('accountId')}" th:errors="*{accountId}" class="text-danger"></span>
+                                <input type="text" th:field="*{account.name}" class="form-control" id="accountName" placeholder="Account Name">
+                                <span th:if="${#fields.hasErrors('accountName')}" th:errors="*{accountName}" class="text-danger"></span>
+                                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Opportunity Name">
+                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                                <input type="text" th:field="*{amount}" class="form-control" id="amount" placeholder="Opportunity Amount">
+                                <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="text-danger"></span>
+                                <select class="form-control" id="stageName" th:field="*{stageName}">
+                                    <option value="0">select option</option>
+                                    <option th:each="stage : ${stages}" th:value="${stage}" th:text="${stage}"></option>
+                                </select>
+                                <input type="text" th:field="*{closeDate}" class="form-control" id="closeDate" placeholder="Close Date">
+                                <span th:if="${#fields.hasErrors('closeDate')}" th:errors="*{closeDate}" class="text-danger"></span>
+                                <input type="text" th:field="*{probability}" class="form-control" id="probability" placeholder="Probability">
+                                <span th:if="${#fields.hasErrors('probability')}" th:errors="*{probability}" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-5">
+                                <input type="submit" class="btn btn-primary" value="Add Opportunity">
+                            </div>
+                        </div>    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
