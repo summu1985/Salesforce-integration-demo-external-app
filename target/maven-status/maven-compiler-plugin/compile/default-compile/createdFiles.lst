@@ -1,7 +1,0 @@
-com/redhat/demo/salesforce/model/Account.class
-com/redhat/demo/salesforce/controller/OpportunityController.class
-com/redhat/demo/salesforce/model/OpportunityList.class
-com/redhat/demo/salesforce/model/Opportunity.class
-com/redhat/demo/salesforce/service/OpportunityService.class
-com/redhat/demo/salesforce/Application.class
-com/redhat/demo/salesforce/model/Attributes.class
