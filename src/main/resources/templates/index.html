@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Users</title>
+    <title>Opportunities</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -14,21 +14,22 @@
 </head>
 
 <body>
-    <div th:switch="${opportunities}" class="container my-8">
+    <div th:switch="${opportunities}" class="container my-20">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-20">
                 <h2 th:case="null">No Expenses yet!</h2>
                 <div th:case="*">
                     <h2 class="my-5">Opportunities</h2>
                     <table class="table table-striped table-responsive-md">
                         <thead>
                             <tr>
-                                <th class="col-sm-2">Opportunity Id</th>
-                                <th class="col-sm-2">Account Name</th>
-                                <th class="col-sm-2">Account Id</th>
-                                <th class="col-sm-2">Stage Name </th>
-                                <th class="col-sm-2">Amount</th>
-                                <th class="col-sm-2">Close Date</th>
+                                <th class="col-sm-1">Opportunity Id</th>
+                                <th class="col-sm-1">Account Name</th>
+                                <th class="col-sm-1">Account Id</th>
+                                <th class="col-sm-4">Opportunity Name</th>
+                                <th class="col-sm-1">Stage Name </th>
+                                <th class="col-sm-1">Amount</th>
+                                <th class="col-sm-3">Close Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,6 +37,7 @@
                                 <td th:text="${opportunity.id}"></td>
                                 <td th:text="${opportunity.account.name}"></td>
                                 <td th:text="${opportunity.accountId}"></td>
+                                <td th:text="${opportunity.name}"></td>
                                 <td th:text="${opportunity.stageName}"></td>
                                 <td th:text="${opportunity.amount}"></td>
                                 <td th:text="${opportunity.closeDate}"></td>

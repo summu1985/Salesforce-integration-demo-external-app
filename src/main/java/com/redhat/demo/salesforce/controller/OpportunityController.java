@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.validation.Valid;
 
+import com.redhat.demo.salesforce.model.Account;
+import com.redhat.demo.salesforce.model.Attributes;
 import com.redhat.demo.salesforce.model.Opportunity;
 import com.redhat.demo.salesforce.service.OpportunityService;
 
@@ -30,7 +32,14 @@ public class OpportunityController {
 
     @GetMapping("/add")
     public String showOpportunityForm(Model model) {
-        model.addAttribute("opportunity", new Opportunity());
+        Account account = new Account();
+        Attributes accAttrs = new Attributes();
+        accAttrs.setType("Account");
+        accAttrs.setUrl("/services/data/v53.0/sobjects/Account/0015j00000eJ79IAAS");
+        account.setAttributes(accAttrs);
+        Opportunity opp = new Opportunity();
+        opp.setAccount(account);
+        model.addAttribute("opportunity", opp);
 
         ArrayList<String> stages = new ArrayList<String>();
         stages.add("Prospecting");
@@ -45,16 +54,10 @@ public class OpportunityController {
 
     @PostMapping("/addopportunity")
     public String addExpense(@Valid Opportunity opportunity, BindingResult result, Model model) {
-        
-        // System.out.println("Inside /addexpense : " + expense + result.toString());
-        // if (result.hasErrors()) {
-        //     return "add-expense";
-        // }
     
         System.out.println(opportunity);
-        // expense.setCreatedAt(new Date());
-        // expense.setLastUpdated(new Date());
-        //expenseRepository.save(expense);
-        return "redirect:/index";
+        String oppId = "Opportunity created successfully with Opportunity id = " + opportunityService.addOpportunity(opportunity);
+        model.addAttribute("opportunityid", oppId);
+        return "opportunity-created";
     }
 }

@@ -103,7 +103,7 @@ public class Opportunity {
      this.probability = probability;
     }
 
-    public void setClosDate(String closeDate) {
+    public void setCloseDate(String closeDate) {
         this.closeDate = closeDate;
     }
 
